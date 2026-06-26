@@ -1,178 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>70-741 Midterm Review Quiz</title>
-<style>
-:root {
-  --bg:#070b16; --panel:#121a29; --panel2:#0d1422; --text:#eef4ff; --muted:#9ba8bd;
-  --border:#2a3a53; --blue:#38bdf8; --red:#ef4444; --green:#22c55e; --orange:#f59e0b;
-}
-* { box-sizing:border-box; }
-body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:linear-gradient(180deg,#080d1b,#050812); color:var(--text); }
-header { position:sticky; top:0; z-index:10; background:#0f172aee; backdrop-filter:blur(8px); border-bottom:1px solid var(--border); }
-.wrap { max-width:1050px; margin:0 auto; padding:18px 16px; }
-.header-row { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-h1 { margin:0; font-size:26px; line-height:1.1; }
-.subtitle { color:var(--muted); margin-top:4px; font-size:16px; }
-.controls { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-button, label.study { border:0; border-radius:12px; padding:12px 18px; color:white; font-weight:800; cursor:pointer; font-size:15px; }
-button { background:#334155; }
-button.primary { background:var(--blue); color:#07111f; }
-button.danger { background:var(--red); }
-label.study { padding:0; display:flex; align-items:center; gap:8px; color:var(--muted); font-weight:600; cursor:pointer; }
-input[type=checkbox] { width:20px; height:20px; accent-color:#2196f3; }
-main.wrap { padding-top:30px; }
-.scorebox { display:none; background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:20px; margin-bottom:18px; }
-.scorebox.show { display:block; }
-.scorebox h2 { margin:0 0 4px; font-size:24px; }
-.card { background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:20px; margin:18px 0; }
-.meta { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; color:var(--muted); flex-wrap:wrap; }
-.pills { display:flex; gap:8px; flex-wrap:wrap; }
-.pill { border:1px solid #42516a; border-radius:999px; padding:4px 10px; font-size:13px; color:#aac0df; }
-.question { font-size:19px; font-weight:800; line-height:1.35; margin:8px 0 16px; }
-.option { width:100%; text-align:left; display:block; background:#0c1322; color:var(--text); border:1px solid #40506a; border-radius:14px; padding:13px 14px; margin:10px 0; font-weight:500; cursor:pointer; }
-.option:hover { border-color:#6b7c99; }
-.option.selected { outline:2px solid var(--blue); }
-.option.correct { background:#0f3d2c; border-color:var(--green); }
-.option.wrong { background:#441a21; border-color:var(--red); }
-.answer { display:none; background:#0b1220; border-radius:12px; padding:14px; margin-top:12px; color:var(--muted); }
-.answer.show { display:block; }
-.small { color:var(--muted); font-size:14px; }
-@media (max-width:700px) {
-  h1 { font-size:23px; }
-  .wrap { padding-left:12px; padding-right:12px; }
-  .card { padding:16px; }
-  .controls { width:100%; justify-content:flex-start; }
-  button, label.study { font-size:14px; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>70-742 Active Directory Quiz</title>
+  <style>
+    :root{--bg:#070b18;--panel:#111827;--panel2:#0b1220;--text:#e5e7eb;--muted:#9ca3af;--border:#334155;--blue:#38bdf8;--green:#22c55e;--red:#ef4444;--yellow:#f59e0b}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.35}
+    header{position:sticky;top:0;z-index:5;background:#0f172a;border-bottom:1px solid var(--border)}
+    .bar{max-width:980px;margin:0 auto;padding:14px 18px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    h1{font-size:24px;margin:0}.sub{color:var(--muted);font-size:15px}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    label{display:flex;gap:7px;align-items:center;color:var(--muted);font-size:16px} input[type=checkbox]{width:20px;height:20px;accent-color:#1d9bf0}
+    button{border:0;border-radius:10px;padding:11px 16px;font-weight:800;font-size:15px;cursor:pointer;color:#08111f}.btn-gray{background:#475569;color:white}.btn-blue{background:var(--blue)}.btn-red{background:var(--red);color:white}
+    main{max-width:980px;margin:0 auto;padding:28px 18px 70px}.score{display:none;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:18px}.score h2{margin:0 0 4px;font-size:28px}.score p{margin:0;color:var(--muted)}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;margin:16px 0}.meta{display:flex;justify-content:space-between;gap:10px;color:#a5b4fc;font-size:14px;margin-bottom:10px}.tag{border:1px solid var(--border);border-radius:999px;padding:3px 9px;color:var(--muted)}
+    .q{font-size:19px;font-weight:800;margin:0 0 14px}.choices{display:grid;gap:10px}.choice{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:13px 14px;text-align:left;color:var(--text);font-weight:600;width:100%;cursor:pointer}.choice:hover{border-color:#64748b}.choice.selected{border-color:var(--blue);box-shadow:0 0 0 2px rgba(56,189,248,.25)}.choice.correct{background:#073f2b;border-color:var(--green)}.choice.wrong{background:#45151c;border-color:var(--red)}
+    .explain{display:none;margin-top:12px;padding:13px 14px;border-radius:12px;background:#0b1220;color:var(--muted);font-weight:650}.explain b{color:var(--text)}
+    .multi-note{color:#fbbf24;font-size:14px;margin:-6px 0 12px}.footer-note{color:var(--muted);font-size:13px;margin-top:24px}
+    @media(max-width:650px){.bar{display:block}.controls{margin-top:12px}.q{font-size:18px}button{padding:10px 13px}.card{padding:15px}}
+  </style>
 </head>
 <body>
-<header>
-  <div class="wrap header-row">
-    <div>
-      <h1>70-741 Midterm Review Quiz</h1>
-      <div class="subtitle">26 questions • official wording where matched • clean study mode</div>
-    </div>
-    <div class="controls">
-      <label class="study"><input id="studyMode" type="checkbox"> Study mode</label>
-      <button id="shuffleBtn">Shuffle</button>
-      <button class="primary" id="gradeBtn">Grade</button>
-      <button class="danger" id="retakeBtn">Retake</button>
-    </div>
-  </div>
-</header>
-<main class="wrap">
-  <section id="scoreBox" class="scorebox"></section>
-  <section id="quiz"></section>
-</main>
+<header><div class="bar"><div><h1>70-742 Active Directory Quiz</h1><div class="sub">Active Directory review • 16 questions • study mode works per-question</div></div><div class="controls"><label><input id="study" type="checkbox"> Study mode</label><button class="btn-gray" id="shuffle">Shuffle</button><button class="btn-blue" id="grade">Grade</button><button class="btn-red" id="retake">Retake</button></div></div></header>
+<main><section id="score" class="score"></section><section id="quiz"></section><div class="footer-note">Study mode: click an answer to reveal that question only. Multiple-answer questions require selecting all correct choices before grade.</div></main>
 <script>
-const QUESTIONS = [{"review": "Review 24", "official": "#4", "q": "Given the IPv6 address: 21cd:001b:0000:0000/8, the “/8” at the end of the address signifies which of the following?", "choices": ["Number of address bytes", "Network bits", "Number of hosts per this network", "Number of possible networks"], "answer": 1}, {"review": "Review 25", "official": "#5", "q": "Certain IPv6 addresses can be contracted. Which of the following is the shortened form of 21cd:0053:0000:0000/64?", "choices": ["21cd:53::/32", "21cd::53::/64", "0:21cd:53::/64", "21cd:53::/64"], "answer": 3}, {"review": "Review 21", "official": "#6", "q": "Which of the following is the primary benefit of the IPv6 address space over the IPv4 address space?", "choices": ["Number of possible hosts and networks", "Motive to update and upgrade hardware and software", "Complexity", "Length"], "answer": 0}, {"review": "Review 22", "official": "#10", "q": "Which tunneling protocol emulates an IPv6 link using an IPv4 network, primarily for Windows workstation operating systems?", "choices": ["ISATAP", "NAT", "DirectAccess remote networking", "Teredo"], "answer": 0}, {"review": "Review 23", "official": "#18", "q": "In the IPv6 space, which of the following is the equivalent of the 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 private network addresses in IPv4?", "choices": ["Global unicast address", "Unique local unicast address", "Anycast address", "Link-local unicast address"], "answer": 1}, {"review": "Review 22 alt", "official": "#22", "q": "Which of the following best describes Intra-Site Automatic Tunnel Addressing Protocol (ISATAP)?", "choices": ["ISATAP converts IPv4 address for an IPv6 network just as 6to4 offers.", "ISATAP emulates an IPv6 link for use on an IPv4 network.", "ISATAP is a method of multicasting for IPv6 networks.", "ISATAP translates between IPv4 and IPv6 networks without client configuration."], "answer": 1}, {"review": "Review 5", "official": "#24", "q": "Which TCP/UDP port does the DNS service use to communicate?", "choices": ["25", "53", "80", "443"], "answer": 1}, {"review": "Review 6", "official": "#26", "q": "Which of the following is an example of an FQDN?", "choices": ["SERVER1", "192.168.1.50", "computer1.sales.microsoft.com", "C:\\WINDOWS\\SYSTEM32\\DRIVERS\\ETC\\HOSTS"], "answer": 2}, {"review": "Review 7", "official": "#28", "q": "Which of the following is an example of a top-level domain?", "choices": [".local", ".net", ".business", "microsoft.com"], "answer": 1}, {"review": "Review 1", "official": "#43", "q": "Which of the following commands would correctly set the DNS socket pool to a value of 7,000?", "choices": ["dnscmd /Config /SocketPoolSize 7000", "dnscmd /Set /SocketPoolSize 7000", "dnscmd /GetSocketPoolSize | dnscmd /Set /SocketPoolSize 7000", "dnscmd /Configure /PoolSize 7000"], "answer": 0}, {"review": "Review 2", "official": "#44", "q": "Which value for DNS cache locking is considered to be the optimal setting?", "choices": ["0", "50", "90", "100"], "answer": 3}, {"review": "Review 3", "official": "#45", "q": "Which Windows Server 2016 DNS feature prioritizes DNS responses based on the subnet of the requesting client?", "choices": ["Conditional forwarding", "Iterative queries", "Recursive queries", "Netmask ordering"], "answer": 3}, {"review": "Review 4", "official": "#46", "q": "Regarding DNSSEC, against which of the following will DNS clients verify digital signatures returned alongside a requested resource record?", "choices": ["Key Signing Key", "Zone Signing Key", "Trust anchor", "DNSSEC resource records"], "answer": 2}, {"review": "Review 12", "official": "#60", "q": "A stub zone is a zone copy that contains only which type of records?", "choices": ["Host entries", "Subdomain entries", "Necessary resource entries", "Query record entries"], "answer": 2}, {"review": "Review 8", "official": "#73", "q": "The dnscmd command can be used to create zones. Which other tasks can be performed with it?", "choices": ["Deleting resource records", "Starting/stopping the DNS service", "Performing name service queries", "Installing DNS services"], "answer": 0}, {"review": "Review 9", "official": "#75", "q": "Which of the following is correct for querying a PTR record?", "choices": ["nslookup Microsoft.com", "nslookup www.technet.com", "nslookup server1", "nslookup 192.168.1.50"], "answer": 3}, {"review": "Review 26", "official": "#77", "q": "The command nslookup 192.168.1.50 is issued but gets no response. Then, the command nslookup server1 is issued and receives 192.168.1.50 as a response. Based on this scenario, which of the following must be true?", "choices": ["The CNAME record is incorrect.", "The PTR record doesn’t exist.", "The A record doesn’t exist.", "The SOA for the zone is malformed."], "answer": 1}, {"review": "Review 10", "official": "#78", "q": "DNS servers contain several different types of resource records with which administrators need to be familiar. Which of the following is the correct definition for Host (A and AAAA) records?", "choices": ["Identifies an alias for a host name", "Identifies a DNS server that is authoritative for a zone", "Maps a domain/host name to an IP address", "Resolves host names from IP addresses"], "answer": 2}, {"review": "Review 11", "official": "#79", "q": "DNS servers contain several different types of resource records with which administrators need to be familiar. Which of the following is the correct definition for Name Server (NS) records?", "choices": ["Identifies an alias for a host name", "Identifies a DNS server that is authoritative for a zone", "Maps a domain/host name to an IP address", "Resolves host names from IP addresses"], "answer": 1}, {"review": "Review 13", "official": "#96", "q": "Which database engine is used for the DHCP database in Windows Server 2012 R2?", "choices": ["SQLite", "Jet", "ESE", "SQL Express"], "answer": 1}, {"review": "Review 14", "official": "#98", "q": "Which of the following criteria can be used to create conditions in a DHCP policy? (Choose all that apply.)", "choices": ["User class", "Vendor class", "MAC address", "Client identifier"], "answer": [0, 1, 2, 3]}, {"review": "Review 17", "official": "#99", "q": "Which of the following terms describes the network transmissions method where packets are sent from one host to all other hosts?", "choices": ["Multicast", "Unicast", "Anycast", "Broadcast"], "answer": 3}, {"review": "Review 15", "official": "#100", "q": "Which of the following networks represents the multicast network space, as defined?", "choices": ["0.0.0.0 to 127.255.255.25", "128.0.0.0 to 191.255.255.255", "192.0.0.0 to 223.255.255.255", "224.0.0.0 to 239.255.255.255"], "answer": 3}, {"review": "Review 16", "official": "#105", "q": "Which term describes the network transmissions method where packets are sent from one to a specific group of other hosts?", "choices": ["Multicast", "Unicast", "Anycast", "Broadcast"], "answer": 0}, {"review": "Review 18", "official": "#117", "q": "When configuring DHCP failover partners, the time synchronization between the partners is critical. Which of the following is the maximum allowable time skew between DHCP failover partners?", "choices": ["15 seconds", "30 seconds", "45 seconds", "60 seconds"], "answer": 3}, {"review": "Review 19", "official": "#119", "q": "Which of the following is the name of the special resource record that Windows Server 2016 DHCP will create to track which machine originally requested a specific name in DNS", "choices": ["DHCP Name Protection", "Dynamic Host Configuration Identifier", "DNS Host Owner Record", "DDNS Host Protection Identifier"], "answer": 1}];
-let order = QUESTIONS.map((_, i) => i);
-let selected = {};
-let revealed = {};
-let graded = false;
-
-const letters = ["A","B","C","D","E","F"];
-
-function isMulti(q) { return Array.isArray(q.answer); }
-function isCorrect(q, choiceIndex) {
-  return isMulti(q) ? q.answer.includes(choiceIndex) : q.answer === choiceIndex;
-}
-function getCorrectText(q) {
-  const ans = isMulti(q) ? q.answer : [q.answer];
-  return ans.map(i => letters[i] + ". " + q.choices[i]).join("; ");
-}
-function arraysEqual(a,b) {
-  if (!Array.isArray(a) || !Array.isArray(b)) return false;
-  if (a.length !== b.length) return false;
-  const aa=[...a].sort(), bb=[...b].sort();
-  return aa.every((v,i)=>v===bb[i]);
-}
-function questionCorrect(q, sel) {
-  if (sel === undefined) return false;
-  if (isMulti(q)) return arraysEqual(sel, q.answer);
-  return sel === q.answer;
-}
-function renderScore() {
-  const box = document.getElementById("scoreBox");
-  if (!graded) { box.className = "scorebox"; box.innerHTML = ""; return; }
-  let correct = 0;
-  QUESTIONS.forEach((q, i) => { if (questionCorrect(q, selected[i])) correct++; });
-  const pct = Math.round(correct / QUESTIONS.length * 100);
-  box.className = "scorebox show";
-  box.innerHTML = `<h2>Score: ${correct} / ${QUESTIONS.length} (${pct}%)</h2><div class="small">Retake any time. Change answers and grade again.</div>`;
-}
-function render() {
-  renderScore();
-  const study = document.getElementById("studyMode").checked;
-  const quiz = document.getElementById("quiz");
-  quiz.innerHTML = order.map((qi, displayIndex) => {
-    const q = QUESTIONS[qi];
-    const sel = selected[qi];
-    const rev = revealed[qi] || graded;
-    const opts = q.choices.map((choice, ci) => {
-      let cls = "option";
-      let chosen = isMulti(q) ? (Array.isArray(sel) && sel.includes(ci)) : sel === ci;
-      if (chosen) cls += " selected";
-      if (rev) {
-        if (isCorrect(q, ci)) cls += " correct";
-        else if (chosen) cls += " wrong";
-      }
-      return `<button class="${cls}" onclick="choose(${qi}, ${ci})">${letters[ci]}. ${escapeHtml(choice)}</button>`;
-    }).join("");
-    const answerClass = rev ? "answer show" : "answer";
-    const multiNote = isMulti(q) ? `<span class="pill">Choose all that apply</span>` : "";
-    return `<article class="card">
-      <div class="meta"><span>Question ${displayIndex+1} of ${QUESTIONS.length}</span><div class="pills"><span class="pill">Official ${q.official}</span><span class="pill">${q.review}</span>${multiNote}</div></div>
-      <div class="question">${escapeHtml(q.q)}</div>
-      <div>${opts}</div>
-      <div class="${answerClass}"><strong>Correct answer:</strong> ${escapeHtml(getCorrectText(q))}</div>
-    </article>`;
-  }).join("");
-}
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-}
-function choose(qi, ci) {
-  const q = QUESTIONS[qi];
-  if (isMulti(q)) {
-    const current = Array.isArray(selected[qi]) ? [...selected[qi]] : [];
-    const idx = current.indexOf(ci);
-    if (idx >= 0) current.splice(idx,1); else current.push(ci);
-    selected[qi] = current;
-  } else {
-    selected[qi] = ci;
-  }
-  if (document.getElementById("studyMode").checked) revealed[qi] = true;
-  render();
-}
-document.getElementById("studyMode").addEventListener("change", () => {
-  // Toggling study mode does not reveal anything by itself.
-  render();
-});
-document.getElementById("gradeBtn").addEventListener("click", () => {
-  graded = true;
-  render();
-  window.scrollTo({top:0, behavior:"smooth"});
-});
-document.getElementById("retakeBtn").addEventListener("click", () => {
-  selected = {};
-  revealed = {};
-  graded = false;
-  render();
-  window.scrollTo({top:0, behavior:"smooth"});
-});
-document.getElementById("shuffleBtn").addEventListener("click", () => {
-  for (let i = order.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [order[i], order[j]] = [order[j], order[i]];
-  }
-  render();
-});
-render();
+const QUESTIONS = [
+{q:"What types of accounts cannot be deleted?",choices:["Local Administrator account on a member server and local Administrator account on a standalone server","Domain Administrator account and Enterprise Administrator account","Any account created during Active Directory installation","Guest account and KRBTGT account"],answers:[0],note:"Built from friend review notes."},
+{q:"How many SPNs should an administrator assign to a web application?",choices:["1","2","3","4"],answers:[1],note:"SPN = Service Principal Name."},
+{q:"What does NTDSUTIL.exe create when run on a domain controller for this recovery/review scenario?",choices:["A snapshot of the Active Directory database","A new child domain","A new global catalog server","A DHCP reservation backup"],answers:[0],note:"Your notes say it creates a snapshot, mounts it as a volume, and saves related data to a specified folder/registry location."},
+{q:"What is the traditional approach to group nesting?",choices:["AGUDLP","AGDLP only","UGALDP","LDAPGU"],answers:[0],note:"Accounts → Global → Universal → Domain Local → Permissions."},
+{q:"What is the default authentication protocol for Windows computers, according to the review notes?",choices:["NTLM","LDAP","RADIUS","EAP"],answers:[0],note:"Review-note answer: NTLM. In AD environments, Kerberos is also central, but memorize the review answer for this quiz."},
+{q:"What group type is used for nonsecurity-related functions?",choices:["Distribution groups","Security groups","Domain local groups","Global groups"],answers:[0],note:"Distribution groups are used for email/distribution-style functions, not permission assignment."},
+{q:"What Microsoft domain service provides authentication for users and computers?",choices:["Active Directory Domain Services (AD DS)","Active Directory Certificate Services (AD CS)","Active Directory Federation Services (AD FS)","Active Directory Lightweight Directory Services (AD LDS)"],answers:[0],note:"AD DS is the core domain authentication/directory service."},
+{q:"Which Kerberos setting is NOT configured by Group Policy, according to the review notes?",choices:["Minimum lifetime for service tickets","Maximum lifetime for user tickets","Maximum lifetime for service tickets","Enforce user logon restrictions"],answers:[0],note:"Memorize the review wording: minimum lifetime for service tickets."},
+{q:"When you install a domain controller at a remote location, the connection to other domain controllers is usually what kind of link?",choices:["WAN link","Loopback link","Console link","Local-only link"],answers:[0],note:"Remote sites connect back over WAN links."},
+{q:"Why are Global Catalog and Read-Only Domain Controller options greyed out when creating a new forest?",choices:["The first DC in a forest must be a global catalog server and cannot be read-only","The first DC must be read-only and cannot be a global catalog server","DNS must be installed before either option can be selected","The forest functional level must be raised first"],answers:[0],note:"First DC in a new forest is writable and must be GC."},
+{q:"Which tab in a user account's properties is used to control logon hours?",choices:["Account","Profile","Member Of","Organization"],answers:[0],note:"Logon Hours is controlled from the Account tab."},
+{q:"What is the process of identifying a user's identity by using a known value?",choices:["Authentication","Authorization","Accounting","Auditing"],answers:[0],note:"Authentication proves identity. Authorization decides access."},
+{q:"A user's account is used by Windows to do which of the following?",choices:["Determine what changes you can make to the computer","Determine what files and folders you have access to","Track personal preferences like drive mappings","All of the above"],answers:[3],note:"Your notes listed all three functions."},
+{q:"Which of the following can be members of a domain local group?",choices:["User accounts","Computer accounts","Global groups from the same forest","Domain local groups in the same domain","All of the above"],answers:[4],note:"This one is a multiple-item concept; the review notes listed all four."},
+{q:"What term describes configuring one group as a member of another group?",choices:["Group nesting","Group scoping","Group conversion","Group delegation"],answers:[0],note:"Group nesting = putting one group inside another."},
+{q:"Which group-scope logic best matches AGUDLP?",choices:["Put user Accounts into Global groups, Global groups into Universal groups, Universal groups into Domain Local groups, then assign Permissions","Put Domain Local groups into Universal groups, then into Global groups, then assign permissions","Assign permissions directly to every user account","Use only distribution groups for permissions"],answers:[0],note:"This reinforces the AGUDLP memorization path."}
+];
+let order=[...QUESTIONS.keys()];
+let selected={};
+let revealed={};
+let graded=false;
+const quiz=document.getElementById('quiz'); const score=document.getElementById('score'); const study=document.getElementById('study');
+function letter(i){return String.fromCharCode(65+i)}
+function isCorrect(qi){const q=QUESTIONS[qi]; const s=selected[qi]||[]; if(s.length!==q.answers.length)return false; return q.answers.every(a=>s.includes(a));}
+function render(){quiz.innerHTML=''; order.forEach((qi,idx)=>{const q=QUESTIONS[qi]; const card=document.createElement('div'); card.className='card'; const multi=q.answers.length>1?'<div class="multi-note">Choose all that apply.</div>':''; card.innerHTML=`<div class="meta"><span>Question ${idx+1} of ${order.length}</span><span class="tag">Review ${qi+1}</span></div><div class="q">${q.q}</div>${multi}<div class="choices"></div><div class="explain">Correct answer: <b>${q.answers.map(a=>letter(a)+'. '+q.choices[a]).join('; ')}</b><br>${q.note||''}</div>`; const choices=card.querySelector('.choices'); q.choices.forEach((c,ci)=>{const b=document.createElement('button'); b.className='choice'; b.textContent=`${letter(ci)}. ${c}`; const sel=(selected[qi]||[]).includes(ci); const show=graded||revealed[qi]; if(sel)b.classList.add('selected'); if(show&&q.answers.includes(ci))b.classList.add('correct'); if(show&&sel&&!q.answers.includes(ci))b.classList.add('wrong'); b.onclick=()=>choose(qi,ci); choices.appendChild(b);}); if(graded||revealed[qi])card.querySelector('.explain').style.display='block'; quiz.appendChild(card);});}
+function choose(qi,ci){const q=QUESTIONS[qi]; if(q.answers.length>1){let arr=selected[qi]?[...selected[qi]]:[]; arr=arr.includes(ci)?arr.filter(x=>x!==ci):[...arr,ci]; selected[qi]=arr;}else{selected[qi]=[ci];} if(study.checked){revealed[qi]=true;} graded=false; score.style.display='none'; render();}
+function grade(){graded=true; const correct=order.filter(qi=>isCorrect(qi)).length; score.style.display='block'; score.innerHTML=`<h2>Score: ${correct} / ${order.length} (${Math.round(correct/order.length*100)}%)</h2><p>Retake any time. Change answers and grade again.</p>`; render(); window.scrollTo({top:0,behavior:'smooth'});}
+function shuffle(){for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];} graded=false; score.style.display='none'; render();}
+function retake(){selected={}; revealed={}; graded=false; score.style.display='none'; render(); window.scrollTo({top:0,behavior:'smooth'});}
+study.addEventListener('change',()=>{revealed={}; graded=false; score.style.display='none'; render();});
+document.getElementById('grade').onclick=grade; document.getElementById('shuffle').onclick=shuffle; document.getElementById('retake').onclick=retake; render();
 </script>
 </body>
 </html>
