@@ -1,65 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>70-742 Active Directory Quiz</title>
-  <style>
-    :root{--bg:#070b18;--panel:#111827;--panel2:#0b1220;--text:#e5e7eb;--muted:#9ca3af;--border:#334155;--blue:#38bdf8;--green:#22c55e;--red:#ef4444;--yellow:#f59e0b}
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.35}
-    header{position:sticky;top:0;z-index:5;background:#0f172a;border-bottom:1px solid var(--border)}
-    .bar{max-width:1000px;margin:0 auto;padding:14px 18px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    h1{font-size:24px;margin:0}.sub{color:var(--muted);font-size:15px}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    label{display:flex;gap:7px;align-items:center;color:var(--muted);font-size:16px} input[type=checkbox]{width:20px;height:20px;accent-color:#1d9bf0}
-    button{border:0;border-radius:10px;padding:11px 16px;font-weight:800;font-size:15px;cursor:pointer;color:#08111f}.btn-gray{background:#475569;color:white}.btn-blue{background:var(--blue)}.btn-red{background:var(--red);color:white}
-    main{max-width:1000px;margin:0 auto;padding:28px 18px 70px}.score{display:none;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:18px}.score h2{margin:0 0 4px;font-size:28px}.score p{margin:0;color:var(--muted)}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;margin:16px 0}.meta{display:flex;justify-content:space-between;gap:10px;color:#a5b4fc;font-size:14px;margin-bottom:10px}.tag{border:1px solid var(--border);border-radius:999px;padding:3px 9px;color:var(--muted)}
-    .q{font-size:19px;font-weight:800;margin:0 0 14px}.choices{display:grid;gap:10px}.choice{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:13px 14px;text-align:left;color:var(--text);font-weight:600;width:100%;cursor:pointer}.choice:hover{border-color:#64748b}.choice.selected{border-color:var(--blue);box-shadow:0 0 0 2px rgba(56,189,248,.25)}.choice.correct{background:#073f2b;border-color:var(--green)}.choice.wrong{background:#45151c;border-color:var(--red)}
-    .explain{display:none;margin-top:12px;padding:13px 14px;border-radius:12px;background:#0b1220;color:var(--muted);font-weight:650}.explain b{color:var(--text)}
-    .multi-note{color:#fbbf24;font-size:14px;margin:-6px 0 12px}.footer-note{color:var(--muted);font-size:13px;margin-top:24px}
-    @media(max-width:650px){.bar{display:block}.controls{margin-top:12px}.q{font-size:18px}button{padding:10px 13px}.card{padding:15px}}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>70-742 Midterm Quiz</title>
+<style>
+  :root{--bg:#070b16;--panel:#111827;--panel2:#0d1424;--line:#314159;--text:#e8edf7;--muted:#aab4c4;--blue:#38bdf8;--red:#ef4444;--green:#22c55e;--yellow:#facc15;}
+  *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#080d1b,#050816);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  header{position:sticky;top:0;z-index:10;background:#0e1526;border-bottom:1px solid var(--line);padding:14px 18px;}
+  .head{max-width:1050px;margin:auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}.title h1{margin:0;font-size:24px}.title p{margin:3px 0 0;color:var(--muted)}
+  .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.controls label{color:var(--muted);font-size:16px}.controls input{transform:scale(1.25);accent-color:#1e90ff}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;font-size:15px;cursor:pointer;color:#07111f}.btn.gray{background:#334155;color:white}.btn.blue{background:var(--blue)}.btn.red{background:var(--red);color:white}
+  main{max-width:1050px;margin:36px auto;padding:0 18px 40px}.score{display:none;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:22px}.score h2{margin:0 0 5px;font-size:28px}.score p{margin:0;color:var(--muted);font-size:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0}.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);margin-bottom:10px}.tag{border:1px solid #475569;border-radius:999px;padding:3px 10px;font-size:13px;color:var(--muted)}
+  .q{font-size:20px;line-height:1.35;font-weight:800;margin:8px 0 16px}.hint{font-size:13px;color:var(--yellow);margin-top:-8px;margin-bottom:10px}.choices{display:grid;gap:10px}.choice{width:100%;text-align:left;background:#0b1220;border:1px solid #475569;color:var(--text);border-radius:13px;padding:13px 14px;font-size:16px;line-height:1.35;cursor:pointer}.choice:hover{border-color:#7c8ca3}.choice.selected{outline:2px solid var(--blue);border-color:var(--blue)}.choice.correct{background:#123f2a;border-color:var(--green)}.choice.wrong{background:#441619;border-color:var(--red)}
+  .answer{display:none;margin-top:12px;background:var(--panel2);border-radius:12px;padding:14px;color:var(--muted);font-size:16px}.answer b{color:var(--text)}.answer.show{display:block}.footer{color:var(--muted);text-align:center;margin-top:30px;font-size:14px}
+</style>
 </head>
 <body>
-<header><div class="bar"><div><h1>70-742 Active Directory Quiz</h1><div class="sub">AD review • 15 questions • answer positions randomized</div></div><div class="controls"><label><input id="study" type="checkbox"> Study mode</label><button class="btn-gray" id="shuffle">Shuffle</button><button class="btn-blue" id="grade">Grade</button><button class="btn-red" id="retake">Retake</button></div></div></header>
-<main><section id="score" class="score"></section><section id="quiz"></section><div class="footer-note">Study mode: click an answer to reveal that question only. Multiple-answer questions require selecting every correct answer before grading.</div></main>
+<header><div class="head"><div class="title"><h1>70-742 Midterm Active Directory Quiz</h1><p>50 questions • generated from review notes • answers randomized</p></div><div class="controls"><label><input id="study" type="checkbox"> Study mode</label><button class="btn gray" id="shuffleBtn">Shuffle</button><button class="btn blue" id="gradeBtn">Grade</button><button class="btn red" id="retakeBtn">Retake</button></div></div></header>
+<main><section class="score" id="scoreBox"><h2 id="scoreText"></h2><p id="scoreSub"></p></section><div id="quiz"></div><div class="footer">Study mode: click an answer to reveal that question only. Grade mode: answer everything, then press Grade.</div></main>
 <script>
 const RAW_QUESTIONS = [
-  {q:"What types of accounts can't be deleted?", correct:["Local admin account on member server","Local admin on stand alone server"], wrong:["Domain Admins group","Enterprise Admins group","A regular domain user account","A disabled user account"], multi:true},
-  {q:"How many SPN's should an admin assign to a web application?", correct:["2"], wrong:["1","3","4"]},
-  {q:"What does the NTDSUTIL.exe command create when it is ran on a domain controller?", correct:["Creates snapshot on AD database","Mounts as volume","Save to a specified folder in the windows registry."], wrong:["Creates a new domain controller","Creates a new Group Policy Object","Deletes the Active Directory database"], multi:true},
-  {q:"What is the traditional approach to groupnesting?", correct:["AGUDLP"], wrong:["AGDLP","AUGDL","DAGULP"]},
-  {q:"What is the default authentication protocol for Windows computers?", correct:["NTLM"], wrong:["LDAP","RADIUS","EAP"]},
-  {q:"What group type is used for nonsecurity related functions?", correct:["Distribution groups"], wrong:["Security groups","Domain local groups","Global groups"]},
-  {q:"What Microsoft domain service provides authentication for users and computers?", correct:["(ADDS) Active Directory Domain Service"], wrong:["(ADCS) Active Directory Certificate Services","(ADFS) Active Directory Federation Services","(ADLDS) Active Directory Lightweight Directory Services"]},
-  {q:"Kerberos setting are configured by group policy? Which is not", correct:["Mim lifetime for service tickets"], wrong:["Maximum lifetime for service tickets","Maximum lifetime for user tickets","Enforce user logon restrictions"]},
-  {q:"When you install dc at a remote location the connection to other dc is what kind of link?", correct:["WAN link"], wrong:["LAN link","Loopback link","Console link"]},
-  {q:"Why are the global catalog and read only domain controllers greyed out when you create a new forest?", correct:["First DC in forest must be a global catalog server","Cannot be read only DC"], wrong:["DNS must be installed first","The domain must already have two DCs","The forest functional level must be raised first"], multi:true},
-  {q:"Which tab in a user account properties would be used to control log in hours?", correct:["Account"], wrong:["Profile","Member Of","Organization"]},
-  {q:"The process for identifying a users identity by using a known value.", correct:["Authentication"], wrong:["Authorization","Accounting","Auditing"]},
-  {q:"A users account is used by windows to do what?", correct:["What changes you can make to computer","Determine what files and folders you have access to","Track personal preferences like drive mappings"], wrong:["Create DNS zones automatically","Install DHCP scopes automatically","Assign SPNs to every web application"], multi:true},
-  {q:"Which of the following can be members of the domain local group", correct:["User account","Computer account","Global group from same forest","Domain local groups in same domain"], wrong:["Local users from a standalone workgroup computer","Every object in Active Directory automatically","Only universal groups"], multi:true},
-  {q:"What term describes the process for configuring one or more members of another group?", correct:["Groupnesting"], wrong:["Group scoping","Group conversion","Group delegation"]}
+{q:"Where can a user be created besides ADUC (Active Directory Users and Computers)?",correct:["Active Directory Administrative Center (ADAC)"],wrong:["Group Policy Management Console (GPMC)","DNS Manager","Server Manager only"]},
+{q:"What is one of the most powerful features of Active Directory that controls working group environment?",correct:["Group policies"],wrong:["DNS forwarding","DHCP reservations","NTFS compression"]},
+{q:"To help prevent hacking, Windows uses what to specify when an account is locked after too many incorrect login attempts?",correct:["Account lockout settings"],wrong:["Audit policy settings","Kerberos delegation settings","DNSSEC settings"]},
+{q:"When an object or organizational unit (OU) is deleted, where is it moved to?",correct:["Deleted Objects container"],wrong:["Builtin container","Users container","System Volume Information"]},
+{q:"Which forest functional level is required in order to use the Active Directory Recycle Bin?",correct:["Windows Server 2008 R2 or later"],wrong:["Windows Server 2003 native","Windows Server 2008 only","Windows Server 2016 only"]},
+{q:"What are the benefits of group policies?",multi:true,correct:["Centralized configuration control","Centralized administration","Rapid security deployment","Automation of application repairs"],wrong:["Manual configuration on every workstation","Eliminating the need for domain controllers","Replacing DNS name resolution","Disabling all local security settings"]},
+{q:"What identifies a user and all the user's group membership after login?",correct:["Their access token"],wrong:["Their SID history only","Their Kerberos realm","Their DNS suffix"]},
+{q:"What are the default containers when a new domain is created?",multi:true,correct:["Built in containers","Computers themselves","NTDS Quotas","Program Data"],wrong:["Starter GPOs","SYSVOL Quarantine","Recycle Bin only","Schema Admins OU"]},
+{q:"Which operations master role coordinates password changes, account lockouts, and time synchronization?",correct:["PDC emulator (Primary Domain Controller Emulator) role"],wrong:["RID Master","Infrastructure Master","Schema Master"]},
+{q:"Which operations master role tracks which objects belong to which domain and is responsible for reference updates?",correct:["Infrastructure Master"],wrong:["PDC Emulator","Domain Naming Master","Schema Master"]},
+{q:"Adding a computer to an Active Directory Domain Services domain consists of how many steps?",correct:["2 steps"],wrong:["1 step","3 steps","5 steps"]},
+{q:"What does the Install from media checkbox do in the Additional Options page?",correct:["Enables you to streamline the process of deploying replica domain controllers to remote sites"],wrong:["Installs AD DS without DNS","Creates a new forest automatically","Forces the domain controller to be read-only"]},
+{q:"When you create a new domain controller, what is the most important part of this process?",correct:["DNS"],wrong:["DHCP","WINS","File Services"]},
+{q:"What type of cloning for Windows Server 2016 automatically runs a subset of the Sysprep process?",correct:["Safe cloning"],wrong:["Unsafe cloning","Offline cloning","Schema cloning"]},
+{q:"A computer that is not joined to a domain is part of which group?",correct:["Workgroup"],wrong:["Forest","Domain local group","Global catalog"]},
+{q:"What are the two Windows Server 2016 group types?",correct:["Distribution and security"],wrong:["Global and universal","Domain local and global","Built-in and custom"]},
+{q:"What are two advantages of utilizing the Delegation of Control Wizard?",multi:true,correct:["Minimum number of administrators with global privileges","Limited scope of errors"],wrong:["Automatically creates a new forest","Removes all inherited permissions","Disables auditing","Forces all users into Domain Admins"]},
+{q:"Which of the following is not a component of a distinguished name?",correct:["Domain controller"],wrong:["Common name","Organizational unit","Domain component"]},
+{q:"With the loss of dcpromo.exe, which wizard is utilized to remove a domain controller?",correct:["Remove Roles and Features in Server Manager"],wrong:["DNS Delegation Wizard","Group Policy Results Wizard","Active Directory Sites and Services Wizard"]},
+{q:"What is the preferred method of subdividing a domain and the domain administrator?",correct:["Must create all other OUs (organizational units)"],wrong:["Must create all other forests","Must create all other schemas","Must create all DNS root hints"]},
+{q:"What are the three types of GPOs?",correct:["Local, domain, and starter"],wrong:["Global, universal, and domain local","User, computer, and printer","Primary, secondary, and stub"]},
+{q:"What command is used to change the parameter for a service account?",correct:["Set-ADServiceAccount"],wrong:["New-ADUser","Set-GPLink","Install-ADDSForest"]},
+{q:"What enables you to assign permissions to multiple users simultaneously?",correct:["Groups"],wrong:["Sites","Subnets","Trust anchors"]},
+{q:"To use group managed service accounts, which domain controller must you have?",correct:["Windows Server 2012 or later"],wrong:["Windows Server 2003 or later","Windows Server 2008 only","Windows NT 4.0 or later"]},
+{q:"What is the most commonly used medium for bulk data storage, backup, and archiving?",correct:["Magnetic tapes"],wrong:["RAM disks","DNS zones","Kerberos tickets"]},
+{q:"GPOs are a collection of user and computer settings, which would include all of the following except?",correct:["Application settings"],wrong:["Security settings","Software installation settings","Administrative template settings"]},
+{q:"Intrasite replication occurs using what?",correct:["Change notifications between domain controllers located within that site"],wrong:["SMTP replication only","Manual file copy between domain controllers","DHCP failover messages"]},
+{q:"Which Windows deployment option allows you to start with a clean Windows install?",correct:["Add servers running Windows Server 2016 and promote to Domain Controller"],wrong:["Upgrade every existing domain controller in place","Restore SYSVOL from tape only","Create a conditional forwarder in every domain"]},
+{q:"What benefits does Windows Server 2016 provide when upgrading to Distributed File System Replication?",multi:true,correct:["More reliable","Easier to support replication solutions","Improved integration with environments that contain RODC"],wrong:["Eliminates the need for SYSVOL","Requires NTFRS only","Removes all domain controllers from replication","Disables replication schedules"]},
+{q:"What are domain-level policies that define security-related attributes assigned to user objects?",correct:["Account policies"],wrong:["Starter GPOs","Site links","Trust policies"]},
+{q:"What is the minimum domain functional level required to support 2016 domain controllers?",correct:["At least Windows Server 2008 (WS2008)"],wrong:["Windows Server 2003 mixed","Windows Server 2012 R2 only","Windows Server 2016 only"]},
+{q:"Account policies contain 3 subsets, which include all of the following except?",correct:["Audit policies"],wrong:["Password policy","Account lockout policy","Kerberos policy"]},
+{q:"Which restoration type of Active Directory uses the date of the backup?",correct:["Non-authoritative restore"],wrong:["Authoritative restore","Bare-metal restore only","Snapshot restore only"]},
+{q:"Which password policy setting defines the number of unique new passwords that must be associated with a user before an old password can be reused?",correct:["Enforce password history"],wrong:["Minimum password age","Maximum password age","Password must meet complexity requirements"]},
+{q:"Which recovery tool can be used in recovery of Active Directory to create and view Active Directory snapshots?",correct:["Active Directory database mounting tool"],wrong:["DNS Manager","DHCP Console","Windows Defender Offline"]},
+{q:"What functional level must be running on the domain controller to enable group membership expiration?",correct:["Windows Server 2016"],wrong:["Windows Server 2008","Windows Server 2008 R2","Windows Server 2012"]},
+{q:"In previous versions of Windows Server, when performing defragmentation of your Active Directory database, what mode should you be in to reboot the domain controller?",correct:["DSRM (Directory Services Restore Mode)"],wrong:["Safe Mode with Networking","VGA Mode","Normal startup mode"]},
+{q:"What tool can be used in an Active Directory database to free up disk space and look for errors?",correct:["ntdsutil.exe"],wrong:["gpupdate.exe","dcdiag.exe only","csvde.exe"]},
+{q:"Which of the following upgrade question was marked as a freebie/incomplete question?",correct:["Conditional forwarders in each domain in a Windows environment"],wrong:["Creating a new forest root domain","Disabling the global catalog","Removing all trust relationships"]},
+{q:"External trust is a one-way or two-way non-transitive trust between domains that are not in the same what?",correct:["Forest"],wrong:["OU","Site","Subnet"]},
+{q:"What command should be used to create external trusts?",correct:["netdom trust command"],wrong:["csvde -i command","gpresult command","repadmin /showrepl command"]},
+{q:"When using csvde.exe, which switch is used to specify the file containing the records to be imported?",correct:["-f command"],wrong:["-r command","-x command","-m command"]},
+{q:"Which scope of trust authentication allows explicit authentication and access to resources in an external trust or forest trust?",correct:["Selective authentication"],wrong:["Forest-wide authentication","Anonymous authentication","Pass-through authentication only"]},
+{q:"What command-line program performs an offline domain join?",correct:["djoin.exe"],wrong:["netdom.exe only","ldifde.exe","ntdsutil.exe"]},
+{q:"What is known as replication within a site?",correct:["Intrasite replication"],wrong:["Intersite replication","FRS migration","Global catalog replication only"]},
+{q:"What defines replication across a site link?",correct:["Replication schedule"],wrong:["Account lockout policy","Password history","SPN count"]},
+{q:"Which of the following is used to create multiple GPOs with the same set of baseline administrative template settings?",correct:["Starter GPO"],wrong:["Domain local group","RID pool","Schema partition"]},
+{q:"Which of the following is not an action that can be performed with an LDIF file?",correct:["Cannot reset a LDIF file"],wrong:["Add objects","Modify objects","Delete objects"]},
+{q:"Which view will allow you to delete an object protected from accidental deletion?",correct:["Advanced Features"],wrong:["Simple View","DNS View","Delegated View"]},
+{q:"Which Windows deployment option allows for a gradual upgrade to Windows Server 2016?",correct:["Create a new domain, and migrate the objects to the new domain"],wrong:["Delete the existing forest and recreate it","Disable AD DS before upgrading","Use only Install from Media"]}
 ];
-let order = RAW_QUESTIONS.map((_,i)=>i);
-let choiceOrder = {};
-let selected = {};
-let revealed = {};
-let graded = false;
-const quiz=document.getElementById('quiz'), score=document.getElementById('score'), study=document.getElementById('study');
-function shuffleArray(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function setupChoices(){choiceOrder={}; RAW_QUESTIONS.forEach((q,qi)=>{const choices=[...q.correct.map(text=>({text,correct:true})),...q.wrong.map(text=>({text,correct:false}))]; choiceOrder[qi]=shuffleArray(choices);});}
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let questions=[];let graded=false;
+function prep(){questions=RAW_QUESTIONS.map((x,idx)=>{let opts=[...x.correct.map(t=>({text:t,correct:true})),...x.wrong.map(t=>({text:t,correct:false}))];shuffleArray(opts);return {...x,id:idx+1,options:opts,selected:new Set(),revealed:false}})}
 function letter(i){return String.fromCharCode(65+i)}
-function selectedChoices(qi){return selected[qi]||[];}
-function isCorrect(qi){const choices=choiceOrder[qi]; const sel=selectedChoices(qi); const correctIdx=choices.map((c,i)=>c.correct?i:null).filter(i=>i!==null); if(sel.length!==correctIdx.length)return false; return correctIdx.every(i=>sel.includes(i));}
-function correctText(qi){return choiceOrder[qi].map((c,i)=>c.correct?`${letter(i)}. ${c.text}`:null).filter(Boolean).join('; ')}
-function render(){quiz.innerHTML=''; order.forEach((qi,idx)=>{const q=RAW_QUESTIONS[qi]; const card=document.createElement('div'); card.className='card'; const multi=q.multi?'<div class="multi-note">Choose all that apply.</div>':''; card.innerHTML=`<div class="meta"><span>Question ${idx+1} of ${order.length}</span><span class="tag">Review ${qi+1}</span></div><div class="q">${q.q}</div>${multi}<div class="choices"></div><div class="explain">Correct answer: <b>${correctText(qi)}</b></div>`; const choicesEl=card.querySelector('.choices'); choiceOrder[qi].forEach((c,ci)=>{const b=document.createElement('button'); b.className='choice'; b.textContent=`${letter(ci)}. ${c.text}`; const sel=selectedChoices(qi).includes(ci); const show=graded||revealed[qi]; if(sel)b.classList.add('selected'); if(show&&c.correct)b.classList.add('correct'); if(show&&sel&&!c.correct)b.classList.add('wrong'); b.onclick=()=>choose(qi,ci); choicesEl.appendChild(b);}); if(graded||revealed[qi])card.querySelector('.explain').style.display='block'; quiz.appendChild(card);});}
-function choose(qi,ci){const q=RAW_QUESTIONS[qi]; if(q.multi){let arr=selectedChoices(qi); arr=arr.includes(ci)?arr.filter(x=>x!==ci):[...arr,ci]; selected[qi]=arr;}else{selected[qi]=[ci];} if(study.checked)revealed[qi]=true; graded=false; score.style.display='none'; render();}
-function grade(){graded=true; const correct=order.filter(qi=>isCorrect(qi)).length; score.style.display='block'; score.innerHTML=`<h2>Score: ${correct} / ${order.length} (${Math.round(correct/order.length*100)}%)</h2><p>Retake any time. Change answers and grade again.</p>`; render(); window.scrollTo({top:0,behavior:'smooth'});}
-function shuffleQuestions(){order=shuffleArray(order); graded=false; score.style.display='none'; render();}
-function retake(){selected={}; revealed={}; graded=false; score.style.display='none'; setupChoices(); render(); window.scrollTo({top:0,behavior:'smooth'});}
-study.addEventListener('change',()=>{revealed={}; graded=false; score.style.display='none'; render();});
-document.getElementById('grade').onclick=grade; document.getElementById('shuffle').onclick=shuffleQuestions; document.getElementById('retake').onclick=retake; setupChoices(); render();
+function render(){const quiz=document.getElementById('quiz');quiz.innerHTML='';questions.forEach((q,qi)=>{const card=document.createElement('section');card.className='card';const multi=q.correct.length>1||q.multi;card.innerHTML=`<div class="meta"><span>Question ${qi+1} of ${questions.length}</span><span class="tag">${multi?'Select all that apply':'Single answer'}</span></div><div class="q">${q.q}</div>${multi?'<div class="hint">Multiple correct answers.</div>':''}<div class="choices"></div><div class="answer">Correct answer: <b>${q.correct.join(' / ')}</b></div>`;const choices=card.querySelector('.choices');q.options.forEach((o,oi)=>{const btn=document.createElement('button');btn.className='choice';btn.textContent=`${letter(oi)}. ${o.text}`;btn.onclick=()=>selectAnswer(q,oi);if(q.selected.has(oi))btn.classList.add('selected');if((graded||q.revealed)&&o.correct)btn.classList.add('correct');if((graded||q.revealed)&&q.selected.has(oi)&&!o.correct)btn.classList.add('wrong');choices.appendChild(btn)});if(graded||q.revealed)card.querySelector('.answer').classList.add('show');quiz.appendChild(card)})}
+function selectAnswer(q,oi){const multi=q.correct.length>1||q.multi;if(multi){if(q.selected.has(oi))q.selected.delete(oi);else q.selected.add(oi)}else{q.selected.clear();q.selected.add(oi)}if(document.getElementById('study').checked)q.revealed=true;render()}
+function isCorrect(q){const correctIdx=q.options.map((o,i)=>o.correct?i:null).filter(i=>i!==null);if(q.selected.size!==correctIdx.length)return false;return correctIdx.every(i=>q.selected.has(i))}
+function grade(){graded=true;let score=questions.filter(isCorrect).length;document.getElementById('scoreBox').style.display='block';document.getElementById('scoreText').textContent=`Score: ${score} / ${questions.length} (${Math.round(score/questions.length*100)}%)`;document.getElementById('scoreSub').textContent='Retake any time. Change answers and grade again.';render();window.scrollTo({top:0,behavior:'smooth'})}
+document.getElementById('gradeBtn').onclick=grade;document.getElementById('shuffleBtn').onclick=()=>{shuffleArray(questions);render()};document.getElementById('retakeBtn').onclick=()=>{graded=false;document.getElementById('scoreBox').style.display='none';prep();render();window.scrollTo({top:0,behavior:'smooth'})};document.getElementById('study').onchange=()=>{};
+prep();render();
 </script>
 </body>
 </html>
