@@ -1,115 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Linux Final Review — 25 Questions</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security+ Midterm Answer Memorizer</title>
 <style>
-:root{--bg:#0f172a;--card:#111827;--choice:#1f2937;--border:#334155;--text:#f8fafc;--muted:#94a3b8;--blue:#3b82f6;--green:#14532d;--red:#7f1d1d}
-*{box-sizing:border-box}
-body{margin:0;background:linear-gradient(#0f172a,#111827);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-.wrap{max-width:920px;margin:auto;padding:18px}
-header{position:sticky;top:0;z-index:10;background:#0f172af2;border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
-h1{margin:0 0 6px;font-size:1.45rem}
-.meta{color:var(--muted)}
-.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
-.ctrl{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
-.primary{background:var(--blue);color:#fff}.secondary{background:#334155;color:#fff}
+body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#fff}
+.wrap{max-width:900px;margin:auto;padding:18px}
+header{position:sticky;top:0;background:#0f172af2;border-bottom:1px solid #334155;z-index:5}
+.meta{color:#94a3b8}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+button{cursor:pointer}.ctrl{border:0;border-radius:10px;padding:10px 14px;font-weight:700}
+.primary{background:#3b82f6;color:#fff}.secondary{background:#334155;color:#fff}
 .score{margin-left:auto;font-weight:700}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin:15px 0}
-.qnum{color:#60a5fa;font-size:.85rem;font-weight:700}
-.question{font-size:1.05rem;line-height:1.45;margin:9px 0 12px}
-.choice{display:block;width:100%;text-align:left;background:var(--choice);color:#fff;border:1px solid #475569;border-radius:10px;padding:12px;margin:8px 0;cursor:pointer}
-.choice.selected{outline:2px solid var(--blue)}
-.choice.correct{background:var(--green);border-color:#22c55e}
-.choice.wrong{background:var(--red);border-color:#ef4444}
+.card{background:#111827;border:1px solid #334155;border-radius:14px;padding:16px;margin:15px 0}
+.qnum{color:#60a5fa;font-size:.85rem;font-weight:700}.question{font-size:1.05rem;margin:9px 0 12px}
+.choice{display:block;width:100%;text-align:left;background:#1f2937;color:#fff;border:1px solid #475569;border-radius:10px;padding:12px;margin:8px 0}
+.choice.selected{outline:2px solid #3b82f6}.choice.correct{background:#14532d}.choice.wrong{background:#7f1d1d}
 #result{display:none;background:#172554;border:1px solid #1d4ed8;border-radius:12px;padding:14px;margin-top:16px;font-weight:700}
 @media(max-width:600px){.score{width:100%;margin-left:0}}
-</style>
-</head>
+</style></head>
 <body>
-<header>
-<div class="wrap">
-<h1>Linux Final Review</h1>
-<div class="meta">25 questions • Original wording and provided answers preserved</div>
+<header><div class="wrap"><h1>Security+ Midterm Answer Memorizer</h1>
+<div class="meta">50 questions • Fixed order • Answers preserved verbatim</div>
 <div class="controls">
 <button class="ctrl primary" id="gradeBtn">Grade Quiz</button>
 <button class="ctrl secondary" id="resetBtn">Retake</button>
 <label><input id="studyMode" type="checkbox"> Study mode</label>
 <span class="score" id="scoreText">Score: —</span>
-</div>
-</div>
-</header>
-<main class="wrap">
-<div id="result"></div>
-<div id="quiz"></div>
-</main>
+</div></div></header>
+<main class="wrap"><div id="result"></div><div id="quiz"></div></main>
 <script>
-const QUESTIONS=[{"q": "What command is used to identify the running OS in verbose output?", "options": ["uname -srv", "hostnamectl", "cat /etc/os-release", "uname -a"], "answer": 0}, {"q": "What is the innermost operating mode level where executing code has full unrestricted access to the hardware?", "options": ["User - Ring 3", "Kernel - Ring 1", "Supervisor - Ring 2", "Kernel - Ring 0"], "answer": 3}, {"q": "At what run-level reboots the system?", "options": ["Run level 6", "Run level 5", "Run level 1", "Run level 0"], "answer": 0}, {"q": "If I wanted to run my operating system in multi-user mode what is the lowest level I can use?", "options": ["Run level 1", "Run level 0", "Run level 2", "Run level 3"], "answer": 2}, {"q": "What command would I use to display the current working directory?", "options": ["cd", "ls", "whereis", "pwd"], "answer": 3}, {"q": "In what phase of the linux boot process does the POST run?", "options": ["BIOS Linux boot process phase (Phase 1)", "Kernel phase (Phase 3)", "Init phase (Phase 4)", "Boot loader phase (Phase 2)"], "answer": 0}, {"q": "What command would I use to determine my current shell environment?", "options": ["printenv USER", "echo $SHELL", "shell --current", "env $SHELL"], "answer": 1}, {"q": "In what directory would I place a shell script to allow everyone to run it?", "options": ["/var/local/bin", "/etc/scripts", "/usr/local/bin", "/home/user/bin"], "answer": 2}, {"q": "On what Linux OS layer performs privileged tasks on behalf of a calling process?", "options": ["Kernel layer - Ring 0", "Application layer - Ring 1", "Shell layer - Ring 2", "User layer - Ring 3"], "answer": 0}, {"q": "What command would I use to check consistency of the file system?", "options": ["fdisk", "fsck", "chkfs", "mount"], "answer": 1}, {"q": "If I was changing file permissions with chmod 755 for a script, who would be able to use the script?", "options": ["Root only", "Owner and group only", "Everyone", "Owner only"], "answer": 2}, {"q": "What is the primary purpose of a CRON tab?", "options": ["Mounting file systems", "Managing user passwords", "Configuring network interfaces", "Specifying shell commands to be run"], "answer": 3}, {"q": "The directory location where user individual CRON tab files are stored?", "options": ["/etc/crontab", "/var/spool/cron", "/usr/local/cron", "/home/usr/.crontab"], "answer": 3}, {"q": "What critical subdirectory file contains basic user and account information?", "options": ["/etc/passwd", "/etc/profile", "/etc/shadow", "/etc/group"], "answer": 0}, {"q": "If I want to change directories how do I do it?", "options": ["pwd", "mv", "cd", "ls"], "answer": 2}, {"q": "The critical directory containing commands and critical configuration files for users.", "options": ["/bin", "/var", "/etc", "/usr"], "answer": 2}, {"q": "When working with CentOS and RedOS Linux what is contained in /tmp folder?", "options": ["Temporary files used by the system", "Kernel modules", "Permanent user files", "System boot files"], "answer": 0}, {"q": "What character spaces indicate owner file permissions?", "options": ["8-10", "2-4", "1-3", "5-7"], "answer": 1}, {"q": "What command would I use to modify default permission settings?", "options": ["chown", "umask", "chmod", "setfacl"], "answer": 1}, {"q": "What file contains user password information and password aging?", "options": ["/etc/passwd", "/etc/group", "/etc/shadow!!!!!!!!!", "/etc/security"], "answer": 2}, {"q": "If I want to delete a user account what command do I use?", "options": ["userremove", "rmuser", "deluseradd", "userdel"], "answer": 3}, {"q": "This user associated file contains both authentication and authorization information?", "options": ["/etc/group", "/etc/passwd", "/etc/sudoers", "/etc/shadow"], "answer": 1}, {"q": "What flag when having a group for a user modifies the users supplementary group membership?", "options": ["-g", "-G", "-s", "-m"], "answer": 1}, {"q": "If I wanted to createa a backup or tape archive what command would I use?", "options": ["gzip", "dd", "tar", "cpio"], "answer": 2}, {"q": "tar -tvf /dev/mt0 command what would I be allowed to view?", "options": ["I want to view the contents of the tape.", "I want to extract the tape.", "I want to erase the tape.", "I want to create a new tape archive."], "answer": 0}];
+const QUESTIONS=[{"q": "What is the answer to question 1?", "options": ["Three", "L2TP", "Administrative", "Mitigation"], "answer": 0}, {"q": "What is the answer to question 2?", "options": ["Accounting", "Harvester", "Two", "Tokenization"], "answer": 1}, {"q": "What is the answer to question 3?", "options": ["None", "Sixteen", "Hashing", "Hash function Symmetric and Assymetric keys"], "answer": 3}, {"q": "What is the answer to question 4?", "options": ["Intent", "Homomorphic", "spyware", "Operational"], "answer": 1}, {"q": "What is the answer to question 5?", "options": ["D is answer", "B is answer", "A is answer", "C is answer"], "answer": 2}, {"q": "What is the answer to question 6?", "options": ["A is answer", "D is answer", "C is answer", "B is answer"], "answer": 2}, {"q": "What is the answer to question 7?", "options": ["GPO", "Physical", "None", "Certification"], "answer": 0}, {"q": "What is the answer to question 8?", "options": ["Zero trust", "PPTP", "Availability", "Tokenization of credentials"], "answer": 0}, {"q": "What is the answer to question 9?", "options": ["Fourteen", "Replay attack", "Collector", "Hash"], "answer": 0}, {"q": "What is the answer to question 10?", "options": ["D is answer", "C is answer", "A is answer", "B is answer"], "answer": 0}, {"q": "What is the answer to question 11?", "options": ["DNS", "File integrity monitoring", "None", "Private"], "answer": 0}, {"q": "What is the answer to question 12?", "options": ["B is answer", "D is answer", "A is answer", "C is answer"], "answer": 3}, {"q": "What is the answer to question 13?", "options": ["FS = DHCP", "Logging", "Sixteen", "Technical"], "answer": 3}, {"q": "What is the answer to question 14?", "options": ["Tokenization", "IF config", "Mitigation", "Bridge"], "answer": 1}, {"q": "What is the answer to question 15?", "options": ["None", "Replay attack", "L2TP", "Hoax"], "answer": 3}, {"q": "What is the answer to question 16?", "options": ["DNS poisoning", "Firewall", "Monitoring", "Nonce"], "answer": 3}, {"q": "What is the answer to question 17?", "options": ["Risk", "Public", "Salt", "Threat"], "answer": 1}, {"q": "What is the answer to question 18?", "options": ["MAC flooding", "netstat", "Administrative", "SAML"], "answer": 0}, {"q": "What is the answer to question 19?", "options": ["Smishing", "Cache Engines", "Emotion", "Collector"], "answer": 1}, {"q": "What is the answer to question 20?", "options": ["Integrity", "Pretexting", "Single Point", "Firewall"], "answer": 2}, {"q": "What is the answer to question 21?", "options": ["C is answer", "Router", "Twin", "Certification"], "answer": 2}, {"q": "What is the answer to question 22?", "options": ["D is answer", "B is answer", "C is answer", "A is answer"], "answer": 1}, {"q": "What is the answer to question 23?", "options": ["Integrity", "Twelve", "DHCP", "Man in the middle"], "answer": 3}, {"q": "What is the answer to question 24?", "options": ["Smishing", "Emotion", "IPsec", "Non repidiation"], "answer": 3}, {"q": "What is the answer to question 25?", "options": ["Not provided", "Port 53", "repitational threat intelligence", "DNS poisoning"], "answer": 2}, {"q": "What is the answer to question 26?", "options": ["Collector", "Cipher", "malware", "Tactical threat intelligence"], "answer": 2}, {"q": "What is the answer to question 27?", "options": ["subject alternative name", "Operational", "Monitoring", "Ten"], "answer": 0}, {"q": "What is the answer to question 28?", "options": ["common name", "Logging", "openSSL", "Tokenization of credentials"], "answer": 2}, {"q": "What is the answer to question 29?", "options": ["Behavior", "File integrity monitoring", "Initiative for open authentication", "Operational"], "answer": 2}, {"q": "What is the answer to question 30?", "options": ["Algorithm", "Transmission of credentials", "Tokenization of credentials", "SAML"], "answer": 1}, {"q": "What is the answer to question 31?", "options": ["certificate authority", "Verification", "Replay attack", "FS = AD"], "answer": 3}, {"q": "What is the answer to question 32?", "options": ["Cloning", "Availability", "Tactical threat intelligence", "Replay attack"], "answer": 0}, {"q": "What is the answer to question 33?", "options": ["None", "common name", "IoT internet of things", "OpenID"], "answer": 2}, {"q": "What is the answer to question 34?", "options": ["B is answer", "D is answer", "A is answer", "C is answer"], "answer": 2}, {"q": "What is the answer to question 35?", "options": ["Tactical threat intelligence", "Port 123", "Router", "Rapid spanning tree protocol"], "answer": 1}, {"q": "What is the answer to question 36?", "options": ["Auditing", "IPsec", "Confidentiality", "DNS poisoning"], "answer": 0}, {"q": "What is the answer to question 37?", "options": ["Vulnerability", "Encryption of credentials", "C is answer", "Router"], "answer": 0}, {"q": "What is the answer to question 38?", "options": ["Not provided", "Risk", "Firewall", "Manuever"], "answer": 3}, {"q": "What is the answer to question 39?", "options": ["Algorithm", "Whaling", "Administrative", "Load Balancers"], "answer": 1}, {"q": "What is the answer to question 40?", "options": ["Unknown", "Port 53", "Primitive", "Integrity"], "answer": 2}, {"q": "What is the answer to question 41?", "options": ["C is answer", "File integrity monitoring", "Identification and AAA (authentication authoriziation accounting)", "Phishing"], "answer": 2}, {"q": "What is the answer to question 42?", "options": ["Exploit", "Rapid spanning tree protocol", "Administrative", "Fraud integrity monitoring"], "answer": 3}, {"q": "What is the answer to question 43?", "options": ["A is answer", "B is answer", "D is answer", "C is answer"], "answer": 1}, {"q": "What is the answer to question 44?", "options": ["Not provided", "Attestation", "Mitigation", "ransomware"], "answer": 1}, {"q": "What is the answer to question 45?", "options": ["Operational", "Certification", "Spanning tree protocol", "Availability"], "answer": 2}, {"q": "What is the answer to question 46?", "options": ["Switch", "Behavior", "Smishing", "OpenID"], "answer": 0}, {"q": "What is the answer to question 47?", "options": ["Sentiment", "C is answer", "Validation", "Proxy Servers"], "answer": 0}, {"q": "What is the answer to question 48?", "options": ["Certification", "None", "SSTP", "ARP spoofing"], "answer": 2}, {"q": "What is the answer to question 49?", "options": ["Not provided", "??", "Unknown", "None"], "answer": 1}, {"q": "What is the answer to question 50?", "options": ["Unknown", "None", "??", "Not provided"], "answer": 2}];
 let state=[];
-
-function esc(s){
-  return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-}
-
-function resetQuiz(){
-  state=QUESTIONS.map(()=>({selected:null,revealed:false}));
-  scoreText.textContent='Score: —';
-  result.style.display='none';
-  render();
-}
-
-function render(){
-  quiz.innerHTML='';
-  QUESTIONS.forEach((q,qi)=>{
-    const card=document.createElement('section');
-    card.className='card';
-    card.innerHTML=`<div class="qnum">Question ${qi+1}</div><div class="question">${esc(q.q)}</div>`;
-    q.options.forEach((opt,oi)=>{
-      const button=document.createElement('button');
-      button.type='button';
-      button.className='choice';
-      button.textContent=String.fromCharCode(65+oi)+'. '+opt;
-      if(state[qi].selected===oi) button.classList.add('selected');
-      if(state[qi].revealed){
-        if(oi===q.answer) button.classList.add('correct');
-        else if(state[qi].selected===oi) button.classList.add('wrong');
-      }
-      button.onclick=()=>{
-        state[qi].selected=oi;
-        if(studyMode.checked) state[qi].revealed=true;
-        render();
-      };
-      card.appendChild(button);
-    });
-    quiz.appendChild(card);
-  });
-}
-
-function gradeQuiz(){
-  let correct=0;
-  state.forEach((s,i)=>{
-    if(s.selected===QUESTIONS[i].answer) correct++;
-    s.revealed=true;
-  });
-  const pct=Math.round(correct/QUESTIONS.length*100);
-  scoreText.textContent=`Score: ${correct}/${QUESTIONS.length} (${pct}%)`;
-  result.textContent=`You answered ${correct} of ${QUESTIONS.length} correctly.`;
-  result.style.display='block';
-  render();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-gradeBtn.onclick=gradeQuiz;
-resetBtn.onclick=resetQuiz;
-studyMode.onchange=()=>{
-  state.forEach(s=>s.revealed=false);
-  scoreText.textContent='Score: —';
-  result.style.display='none';
-  render();
-};
-
-resetQuiz();
-</script>
-</body>
-</html>
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function resetQuiz(){state=QUESTIONS.map(()=>({selected:null,revealed:false}));scoreText.textContent='Score: —';result.style.display='none';render();}
+function render(){quiz.innerHTML='';QUESTIONS.forEach((q,qi)=>{const c=document.createElement('section');c.className='card';c.innerHTML=`<div class="qnum">Question ${qi+1} of ${QUESTIONS.length}</div><div class="question">${esc(q.q)}</div>`;q.options.forEach((o,oi)=>{const b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+oi)+'. '+o;if(state[qi].selected===oi)b.classList.add('selected');if(state[qi].revealed){if(oi===q.answer)b.classList.add('correct');else if(state[qi].selected===oi)b.classList.add('wrong');}b.onclick=()=>{state[qi].selected=oi;if(studyMode.checked)state[qi].revealed=true;render();};c.appendChild(b);});quiz.appendChild(c);});}
+function gradeQuiz(){let n=0;state.forEach((s,i)=>{if(s.selected===QUESTIONS[i].answer)n++;s.revealed=true;});const p=Math.round(n/QUESTIONS.length*100);scoreText.textContent=`Score: ${n}/${QUESTIONS.length} (${p}%)`;result.textContent=`You answered ${n} of ${QUESTIONS.length} correctly.`;result.style.display='block';render();window.scrollTo({top:0,behavior:'smooth'});}
+gradeBtn.onclick=gradeQuiz;resetBtn.onclick=resetQuiz;studyMode.onchange=()=>{state.forEach(s=>s.revealed=false);scoreText.textContent='Score: —';result.style.display='none';render();};resetQuiz();
+</script></body></html>
