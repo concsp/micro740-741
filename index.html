@@ -1,39 +1,130 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Security+ Midterm Answer Memorizer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security+ Final Review</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#fff}
-.wrap{max-width:900px;margin:auto;padding:18px}
-header{position:sticky;top:0;background:#0f172af2;border-bottom:1px solid #334155;z-index:5}
-.meta{color:#94a3b8}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
-button{cursor:pointer}.ctrl{border:0;border-radius:10px;padding:10px 14px;font-weight:700}
-.primary{background:#3b82f6;color:#fff}.secondary{background:#334155;color:#fff}
+:root{--bg:#0f172a;--card:#111827;--choice:#1f2937;--border:#334155;--text:#f8fafc;--muted:#94a3b8;--blue:#3b82f6;--green:#14532d;--red:#7f1d1d}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(#0f172a,#111827);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+.wrap{max-width:920px;margin:auto;padding:18px}
+header{position:sticky;top:0;z-index:10;background:#0f172af2;border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+h1{margin:0 0 6px;font-size:1.45rem}
+.meta{color:var(--muted)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.ctrl{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+.primary{background:var(--blue);color:#fff}.secondary{background:#334155;color:#fff}
 .score{margin-left:auto;font-weight:700}
-.card{background:#111827;border:1px solid #334155;border-radius:14px;padding:16px;margin:15px 0}
-.qnum{color:#60a5fa;font-size:.85rem;font-weight:700}.question{font-size:1.05rem;margin:9px 0 12px}
-.choice{display:block;width:100%;text-align:left;background:#1f2937;color:#fff;border:1px solid #475569;border-radius:10px;padding:12px;margin:8px 0}
-.choice.selected{outline:2px solid #3b82f6}.choice.correct{background:#14532d}.choice.wrong{background:#7f1d1d}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin:15px 0}
+.qnum{color:#60a5fa;font-size:.85rem;font-weight:700}
+.question{font-size:1.06rem;line-height:1.45;margin:9px 0 12px}
+.choice{display:block;width:100%;text-align:left;background:var(--choice);color:#fff;border:1px solid #475569;border-radius:10px;padding:12px;margin:8px 0;cursor:pointer}
+.choice.selected{outline:2px solid var(--blue)}
+.choice.correct{background:var(--green);border-color:#22c55e}
+.choice.wrong{background:var(--red);border-color:#ef4444}
+.note{color:var(--muted);font-size:.85rem;margin-top:8px}
 #result{display:none;background:#172554;border:1px solid #1d4ed8;border-radius:12px;padding:14px;margin-top:16px;font-weight:700}
 @media(max-width:600px){.score{width:100%;margin-left:0}}
-</style></head>
+</style>
+</head>
 <body>
-<header><div class="wrap"><h1>Security+ Midterm Answer Memorizer</h1>
-<div class="meta">50 questions • Fixed order • Answers preserved verbatim</div>
+<header>
+<div class="wrap">
+<h1>Security+ Final Review</h1>
+<div class="meta">50 questions • Review wording preserved • Q45 has 2 correct answers</div>
 <div class="controls">
 <button class="ctrl primary" id="gradeBtn">Grade Quiz</button>
 <button class="ctrl secondary" id="resetBtn">Retake</button>
 <label><input id="studyMode" type="checkbox"> Study mode</label>
 <span class="score" id="scoreText">Score: —</span>
-</div></div></header>
-<main class="wrap"><div id="result"></div><div id="quiz"></div></main>
+</div>
+</div>
+</header>
+<main class="wrap">
+<div id="result"></div>
+<div id="quiz"></div>
+</main>
 <script>
-const QUESTIONS=[{"q": "What is the answer to question 1?", "options": ["Three", "L2TP", "Administrative", "Mitigation"], "answer": 0}, {"q": "What is the answer to question 2?", "options": ["Accounting", "Harvester", "Two", "Tokenization"], "answer": 1}, {"q": "What is the answer to question 3?", "options": ["None", "Sixteen", "Hashing", "Hash function Symmetric and Assymetric keys"], "answer": 3}, {"q": "What is the answer to question 4?", "options": ["Intent", "Homomorphic", "spyware", "Operational"], "answer": 1}, {"q": "What is the answer to question 5?", "options": ["D is answer", "B is answer", "A is answer", "C is answer"], "answer": 2}, {"q": "What is the answer to question 6?", "options": ["A is answer", "D is answer", "C is answer", "B is answer"], "answer": 2}, {"q": "What is the answer to question 7?", "options": ["GPO", "Physical", "None", "Certification"], "answer": 0}, {"q": "What is the answer to question 8?", "options": ["Zero trust", "PPTP", "Availability", "Tokenization of credentials"], "answer": 0}, {"q": "What is the answer to question 9?", "options": ["Fourteen", "Replay attack", "Collector", "Hash"], "answer": 0}, {"q": "What is the answer to question 10?", "options": ["D is answer", "C is answer", "A is answer", "B is answer"], "answer": 0}, {"q": "What is the answer to question 11?", "options": ["DNS", "File integrity monitoring", "None", "Private"], "answer": 0}, {"q": "What is the answer to question 12?", "options": ["B is answer", "D is answer", "A is answer", "C is answer"], "answer": 3}, {"q": "What is the answer to question 13?", "options": ["FS = DHCP", "Logging", "Sixteen", "Technical"], "answer": 3}, {"q": "What is the answer to question 14?", "options": ["Tokenization", "IF config", "Mitigation", "Bridge"], "answer": 1}, {"q": "What is the answer to question 15?", "options": ["None", "Replay attack", "L2TP", "Hoax"], "answer": 3}, {"q": "What is the answer to question 16?", "options": ["DNS poisoning", "Firewall", "Monitoring", "Nonce"], "answer": 3}, {"q": "What is the answer to question 17?", "options": ["Risk", "Public", "Salt", "Threat"], "answer": 1}, {"q": "What is the answer to question 18?", "options": ["MAC flooding", "netstat", "Administrative", "SAML"], "answer": 0}, {"q": "What is the answer to question 19?", "options": ["Smishing", "Cache Engines", "Emotion", "Collector"], "answer": 1}, {"q": "What is the answer to question 20?", "options": ["Integrity", "Pretexting", "Single Point", "Firewall"], "answer": 2}, {"q": "What is the answer to question 21?", "options": ["C is answer", "Router", "Twin", "Certification"], "answer": 2}, {"q": "What is the answer to question 22?", "options": ["D is answer", "B is answer", "C is answer", "A is answer"], "answer": 1}, {"q": "What is the answer to question 23?", "options": ["Integrity", "Twelve", "DHCP", "Man in the middle"], "answer": 3}, {"q": "What is the answer to question 24?", "options": ["Smishing", "Emotion", "IPsec", "Non repidiation"], "answer": 3}, {"q": "What is the answer to question 25?", "options": ["Not provided", "Port 53", "repitational threat intelligence", "DNS poisoning"], "answer": 2}, {"q": "What is the answer to question 26?", "options": ["Collector", "Cipher", "malware", "Tactical threat intelligence"], "answer": 2}, {"q": "What is the answer to question 27?", "options": ["subject alternative name", "Operational", "Monitoring", "Ten"], "answer": 0}, {"q": "What is the answer to question 28?", "options": ["common name", "Logging", "openSSL", "Tokenization of credentials"], "answer": 2}, {"q": "What is the answer to question 29?", "options": ["Behavior", "File integrity monitoring", "Initiative for open authentication", "Operational"], "answer": 2}, {"q": "What is the answer to question 30?", "options": ["Algorithm", "Transmission of credentials", "Tokenization of credentials", "SAML"], "answer": 1}, {"q": "What is the answer to question 31?", "options": ["certificate authority", "Verification", "Replay attack", "FS = AD"], "answer": 3}, {"q": "What is the answer to question 32?", "options": ["Cloning", "Availability", "Tactical threat intelligence", "Replay attack"], "answer": 0}, {"q": "What is the answer to question 33?", "options": ["None", "common name", "IoT internet of things", "OpenID"], "answer": 2}, {"q": "What is the answer to question 34?", "options": ["B is answer", "D is answer", "A is answer", "C is answer"], "answer": 2}, {"q": "What is the answer to question 35?", "options": ["Tactical threat intelligence", "Port 123", "Router", "Rapid spanning tree protocol"], "answer": 1}, {"q": "What is the answer to question 36?", "options": ["Auditing", "IPsec", "Confidentiality", "DNS poisoning"], "answer": 0}, {"q": "What is the answer to question 37?", "options": ["Vulnerability", "Encryption of credentials", "C is answer", "Router"], "answer": 0}, {"q": "What is the answer to question 38?", "options": ["Not provided", "Risk", "Firewall", "Manuever"], "answer": 3}, {"q": "What is the answer to question 39?", "options": ["Algorithm", "Whaling", "Administrative", "Load Balancers"], "answer": 1}, {"q": "What is the answer to question 40?", "options": ["Unknown", "Port 53", "Primitive", "Integrity"], "answer": 2}, {"q": "What is the answer to question 41?", "options": ["C is answer", "File integrity monitoring", "Identification and AAA (authentication authoriziation accounting)", "Phishing"], "answer": 2}, {"q": "What is the answer to question 42?", "options": ["Exploit", "Rapid spanning tree protocol", "Administrative", "Fraud integrity monitoring"], "answer": 3}, {"q": "What is the answer to question 43?", "options": ["A is answer", "B is answer", "D is answer", "C is answer"], "answer": 1}, {"q": "What is the answer to question 44?", "options": ["Not provided", "Attestation", "Mitigation", "ransomware"], "answer": 1}, {"q": "What is the answer to question 45?", "options": ["Operational", "Certification", "Spanning tree protocol", "Availability"], "answer": 2}, {"q": "What is the answer to question 46?", "options": ["Switch", "Behavior", "Smishing", "OpenID"], "answer": 0}, {"q": "What is the answer to question 47?", "options": ["Sentiment", "C is answer", "Validation", "Proxy Servers"], "answer": 0}, {"q": "What is the answer to question 48?", "options": ["Certification", "None", "SSTP", "ARP spoofing"], "answer": 2}, {"q": "What is the answer to question 49?", "options": ["Not provided", "??", "Unknown", "None"], "answer": 1}, {"q": "What is the answer to question 50?", "options": ["Unknown", "None", "??", "Not provided"], "answer": 2}];
+const QUESTIONS=[{"q": "Out of these options which one is a type of alarm?", "options": ["Pressure", "Motion", "Circuit", "Thermal"], "correct": [2], "multi": false}, {"q": "Which contractual agreement sets out the details in which service is provided?", "options": ["Memorandum of Understanding", "Service Level Agreement", "Interconnection Security Agreement", "Business Partnership Agreement"], "correct": [1], "multi": false}, {"q": "Which description best depicts the responsibilities of a data custodian?", "options": ["Responsible for defining legal retention requirements", "Responsible for determining data classification", "Responsible for approving all business risks", "Responsible for handling the management of the system on which data assets are stored"], "correct": [3], "multi": false}, {"q": "Which type of log files are generated by clients such as routers, firewalls, switches, and access points?", "options": ["System", "Security", "Application", "Network"], "correct": [3], "multi": false}, {"q": "Which type of boot is designed to prevent computers from being hijacked by malicious OS?", "options": ["Legacy", "Trusted", "Measured", "Secure"], "correct": [3], "multi": false}, {"q": "Which physical security device could be used to ensure safety of off-site backup tapes?", "options": ["Mantrap", "Vault", "Bollard", "Turnstile"], "correct": [1], "multi": false}, {"q": "Which mobile device deployment model is most popular with employees but poses the most issues for security and asset managers?", "options": ["BYOD", "COPE", "CYOD", "COBO"], "correct": [0], "multi": false}, {"q": "All settings are used to configure screen lock on smart phone except:", "options": ["!!Self explanatory", "Biometric", "PIN", "Password"], "correct": [0], "multi": false}, {"q": "Which data can be trackable so that when a threat actor successfully infiltrates the attempt can be traced?", "options": ["SIEM", "Jump box", "Sandbox", "Honeypot"], "correct": [3], "multi": false}, {"q": "The category of lock??", "options": ["Biometric", "Cable", "Combination", "Electronic"], "correct": [0], "multi": false}, {"q": "This term refers to the reading that predicts the length of time a device or component is expected to be operational?", "options": ["MTTR", "RTO", "MTTF", "MTBF"], "correct": [2], "multi": false}, {"q": "Which term refers to the practice of collecting evidence from computer systems to a standard accepted by a court of law?", "options": ["Incident response", "eDiscovery", "Threat hunting", "Digital forensics"], "correct": [3], "multi": false}, {"q": "Which attack refers to using an exploit in Bluetooth to steal info from someone else's phone?", "options": ["Bluejacking", "Smishing", "NFC relay", "Snarfing"], "correct": [3], "multi": false}, {"q": "Which security tool is used to control mobile device camera or video functions?", "options": ["Geotagging", "Remote wipe", "Geofencing", "Containerization"], "correct": [2], "multi": false}, {"q": "Which root of trust is a secure subsystem that is capable of providing attestation?", "options": ["Cloud", "Hardware", "Software", "Virtual"], "correct": [1], "multi": false}, {"q": "This term is used to describe a global network of appliances and personal devices equipped", "options": ["Operational Technology", "Industrial Control Systems", "Internet of Things", "Mobile Device Management"], "correct": [2], "multi": false}, {"q": "This term refers to the completion of an administrative task without human intervention?", "options": ["Delegated", "Orchestrated", "Automated", "Manual"], "correct": [2], "multi": false}, {"q": "What type of validation is a primary vector for attacking applications?", "options": ["Output", "Certificate", "Session", "Input"], "correct": [3], "multi": false}, {"q": "Which technique of collecting evidence entails an investigator asking questions and recording the answers to notes in order to gain understanding of an incident?", "options": ["Sampling", "Observation", "Interview", "Acquisition"], "correct": [2], "multi": false}, {"q": "Which attack can be launched using any type of compromise that allows the adversary to run arbitrary code as a script?", "options": ["Directory traversal", "SQL injection", "Cross-site request forgery", "Click jacking"], "correct": [3], "multi": false}, {"q": "Which type of privilege escalation allows a user functionality or data that should not be available to it?", "options": ["Vertical", "Horizontal", "Lateral", "Transitive"], "correct": [0], "multi": false}, {"q": "Which term refers to a computer system setup to attract threat actors?", "options": ["Bastion host", "Honeypot", "Proxy", "Jump server"], "correct": [1], "multi": false}, {"q": "What stage of an incident response lifecycle involves limiting the scope and magnitude of the incident?", "options": ["Containment", "Eradication", "Recovery", "Preparation"], "correct": [0], "multi": false}, {"q": "Which term refers to an additional value stored with a hash data field?", "options": ["Pepper", "Nonce", "Salt", "Token"], "correct": [2], "multi": false}, {"q": "The principal meaning of proving the authenticity and integrity of code in executable and a script is referred to as code ____.", "options": ["Signing", "Hashing", "Encrypting", "Stamping"], "correct": [0], "multi": false}, {"q": "Which list is a permissive policy that only prevents execution of listed processes and scripts?", "options": ["Block", "Permit", "Trusted", "Allow"], "correct": [0], "multi": false}, {"q": "Which attack is a specific type of on-path attack where the web browser is compromised?", "options": ["Session hijacking", "Man-in-the-Browser", "Browser redirection", "Man-in-the-Middle"], "correct": [1], "multi": false}, {"q": "Which description of enterprise management refers to a cloud access security broker?", "options": ["Software designed only to encrypt cloud storage", "Hardware used to isolate cloud workloads", "A firewall used only for SaaS applications", "Software designed to mediate access to cloud services by users across all types of devices"], "correct": [3], "multi": false}, {"q": "Which locations can indicators of cloud-based attacks on premises be found in?", "options": ["Local Access Logs, Network Traffic, API Logs, Metrics", "Local Application Logs, Network Traffic, API Logs, Metrics", "Local Security Logs, Network Traffic, API Logs, Metrics", "Local System Logs, Network Traffic, API Logs, Metrics"], "correct": [1], "multi": false}, {"q": "Which OS based execution control improves config options and default usage of SRD?", "options": ["SELinux", "Windows Defender Firewall", "BitLocker", "AppLocker"], "correct": [3], "multi": false}, {"q": "When used as a service all of these models are common cloud service models except:", "options": ["Platform", "Software", "Applications", "Infrastructure"], "correct": [2], "multi": false}, {"q": "Which description best fits the critical data classification?", "options": ["The information may be shared internally without restriction", "The information is low impact if disclosed", "The information is intended for public release", "The information is too valuable to allow any risk of its capture"], "correct": [3], "multi": false}, {"q": "An electrical source such as a cable or fluorescent light that can corrupt data signals is also known as ____.", "options": ["ESD", "EMP", "RFI", "EMI"], "correct": [3], "multi": false}, {"q": "Which technique is used to prevent any unauthorized computing, network, or storage connection to a protected host?", "options": ["DMZ", "NAT", "VLAN", "Air gap"], "correct": [0], "multi": false}, {"q": "Which detection and response product does not prevent initial execution but provides real-time in-circle protection to the compromise?", "options": ["Cloud", "Email", "Endpoint", "Network"], "correct": [2], "multi": false}, {"q": "Which type of alarm is linked to a detector that is triggered to any movement in an area?", "options": ["Circuit", "Motion Sensor", "Pressure Sensor", "Thermal Sensor"], "correct": [1], "multi": false}, {"q": "Which type of backup site is always up to date with security patches and can be brought into operation immediately?", "options": ["Off-site", "Cold site", "Mobile site", "Warm site"], "correct": [0], "multi": false}, {"q": "Which device provides a temporary power source in event of a blackout?", "options": ["Generator", "PDU", "UPS", "ATS"], "correct": [2], "multi": false}, {"q": "What type of risk indicates likelihood and impact after specific mitigation, transference, or acceptance measures have been applied?", "options": ["Control risk", "Risk appetite", "Inherent risk", "Residual risk"], "correct": [3], "multi": false}, {"q": "What stage of the incident response lifecycle involves bringing and rating the business process that it supports?", "options": ["Preparation", "Recovery", "Containment", "Eradication"], "correct": [1], "multi": false}, {"q": "What category of cloud deployment models describes several organizations that share the cost of either a host of private or fully private cloud?", "options": ["Private", "Hybrid", "Public", "Community"], "correct": [3], "multi": false}, {"q": "What measurement refers to the time needed to correct a fault so system is restored to full operation?", "options": ["RPO", "MTTR", "MTBF", "MTTF"], "correct": [1], "multi": false}, {"q": "Which description best depicts the responsibility of a data privacy officer?", "options": ["They approve every software deployment", "They manage user authentication systems", "They are responsible for oversight of any personally identifiable information assets managed by the company", "They maintain all firewall rules"], "correct": [2], "multi": false}, {"q": "Which solution utilizes media encryption key that when erased renders data unrecoverable?", "options": ["Secure Delete", "Disk Sanitization", "Crypto Shredding", "Instant Secure Erase"], "correct": [3], "multi": false}, {"q": "(2 Answers) Which variables are the main vars for calculating risk?", "options": ["Asset value", "Likelihood", "Cost", "Impact", "Exposure"], "correct": [3, 1], "multi": true}, {"q": "Which term refers to keeping a record of which entry/exit points are used and detecting security breaches?", "options": ["Access Control List", "Accounting Log", "Audit Policy", "Authentication Log"], "correct": [1], "multi": false}, {"q": "What risk best represents an internal risk?", "options": ["Nation-state actors", "Employees", "Competitors", "Hacktivists"], "correct": [1], "multi": false}, {"q": "This term refers to a live acquisition of a persistent disk?", "options": ["Clone", "Snapshot", "Image", "Backup"], "correct": [1], "multi": false}, {"q": "What term refers to the process of gathering info to protect against espionage and hacking?", "options": ["Counter-intelligence", "Competitive intelligence", "Open-source intelligence", "Threat intelligence"], "correct": [0], "multi": false}, {"q": "Which term describes the cost involved in supplying automation service to more users as linear?", "options": ["Elasticity", "Resiliency", "Scalability", "Availability"], "correct": [2], "multi": false}];
 let state=[];
-function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
-function resetQuiz(){state=QUESTIONS.map(()=>({selected:null,revealed:false}));scoreText.textContent='Score: —';result.style.display='none';render();}
-function render(){quiz.innerHTML='';QUESTIONS.forEach((q,qi)=>{const c=document.createElement('section');c.className='card';c.innerHTML=`<div class="qnum">Question ${qi+1} of ${QUESTIONS.length}</div><div class="question">${esc(q.q)}</div>`;q.options.forEach((o,oi)=>{const b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+oi)+'. '+o;if(state[qi].selected===oi)b.classList.add('selected');if(state[qi].revealed){if(oi===q.answer)b.classList.add('correct');else if(state[qi].selected===oi)b.classList.add('wrong');}b.onclick=()=>{state[qi].selected=oi;if(studyMode.checked)state[qi].revealed=true;render();};c.appendChild(b);});quiz.appendChild(c);});}
-function gradeQuiz(){let n=0;state.forEach((s,i)=>{if(s.selected===QUESTIONS[i].answer)n++;s.revealed=true;});const p=Math.round(n/QUESTIONS.length*100);scoreText.textContent=`Score: ${n}/${QUESTIONS.length} (${p}%)`;result.textContent=`You answered ${n} of ${QUESTIONS.length} correctly.`;result.style.display='block';render();window.scrollTo({top:0,behavior:'smooth'});}
-gradeBtn.onclick=gradeQuiz;resetBtn.onclick=resetQuiz;studyMode.onchange=()=>{state.forEach(s=>s.revealed=false);scoreText.textContent='Score: —';result.style.display='none';render();};resetQuiz();
-</script></body></html>
+
+function esc(s){
+  return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+function resetQuiz(){
+  state=QUESTIONS.map(()=>({selected:new Set(),revealed:false}));
+  scoreText.textContent='Score: —';
+  result.style.display='none';
+  render();
+}
+function isCorrect(qi){
+  const q=QUESTIONS[qi];
+  const chosen=[...state[qi].selected].sort((a,b)=>a-b);
+  const correct=[...q.correct].sort((a,b)=>a-b);
+  return chosen.length===correct.length && chosen.every((v,i)=>v===correct[i]);
+}
+function render(){
+  quiz.innerHTML='';
+  QUESTIONS.forEach((q,qi)=>{
+    const card=document.createElement('section');
+    card.className='card';
+    card.innerHTML=`<div class="qnum">Question ${qi+1} of ${QUESTIONS.length}</div><div class="question">${esc(q.q)}</div>`;
+    q.options.forEach((opt,oi)=>{
+      const b=document.createElement('button');
+      b.type='button';
+      b.className='choice';
+      b.textContent=String.fromCharCode(65+oi)+'. '+opt;
+      if(state[qi].selected.has(oi)) b.classList.add('selected');
+      if(state[qi].revealed){
+        if(q.correct.includes(oi)) b.classList.add('correct');
+        else if(state[qi].selected.has(oi)) b.classList.add('wrong');
+      }
+      b.onclick=()=>{
+        if(q.multi){
+          if(state[qi].selected.has(oi)) state[qi].selected.delete(oi);
+          else state[qi].selected.add(oi);
+          if(studyMode.checked && state[qi].selected.size===q.correct.length) state[qi].revealed=true;
+        }else{
+          state[qi].selected.clear();
+          state[qi].selected.add(oi);
+          if(studyMode.checked) state[qi].revealed=true;
+        }
+        render();
+      };
+      card.appendChild(b);
+    });
+    if(q.multi){
+      const n=document.createElement('div');
+      n.className='note';
+      n.textContent='Select 2 answers.';
+      card.appendChild(n);
+    }
+    quiz.appendChild(card);
+  });
+}
+function gradeQuiz(){
+  let correct=0;
+  state.forEach((s,i)=>{
+    if(isCorrect(i)) correct++;
+    s.revealed=true;
+  });
+  const pct=Math.round(correct/QUESTIONS.length*100);
+  scoreText.textContent=`Score: ${correct}/${QUESTIONS.length} (${pct}%)`;
+  result.textContent=`You answered ${correct} of ${QUESTIONS.length} correctly.`;
+  result.style.display='block';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+gradeBtn.onclick=gradeQuiz;
+resetBtn.onclick=resetQuiz;
+studyMode.onchange=()=>{
+  state.forEach(s=>s.revealed=false);
+  scoreText.textContent='Score: —';
+  result.style.display='none';
+  render();
+};
+resetQuiz();
+</script>
+</body>
+</html>
